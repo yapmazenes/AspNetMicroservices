@@ -24,3 +24,9 @@ docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml down -d
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 docker rmi $(docker images -q)
+
+-----
+docker pull redis
+docker run -d -p 6379:6379 --name aspnetrun-redis redis
+docker logs -f aspnetrun-redis
+docker exec -it aspnetrun-redis /bin/bash
