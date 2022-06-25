@@ -1,0 +1,26 @@
+﻿docker ps
+  --Show all running docker containers
+docker ps -a
+  --Show both running and stopped containers
+docker ps -aq
+  -q -> quites -> only display container ids
+
+docker images
+
+docker start <Container_ID>
+
+docker stop <Container_ID>
+
+docker rm <Container_ID>
+
+docker run -d -p 27017:27017 --name shopping-mongo mongo
+  -d -> detached mode
+  -p -> configure ports (localMachine_port:container_port)
+
+docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
+docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml down -d
+  -f -> files
+
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker rmi $(docker images -q)
