@@ -23,11 +23,15 @@ namespace Basket.API.Repositories
             {
                 var basketCache = await _distributedCache.GetStringAsync(userName);
 
+                if (string.IsNullOrEmpty(basketCache))
+                    return null;
+
                 return JsonConvert.DeserializeObject<ShoppingCart>(basketCache);
             }
 
             return null;
         }
+
         public async Task<ShoppingCart> UpdateBasket(ShoppingCart basket)
         {
             await _distributedCache.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
