@@ -17,13 +17,34 @@ docker run -d -p 27017:27017 --name shopping-mongo mongo
   -d -> detached mode
   -p -> configure ports (localMachine_port:container_port)
 
+Example docker hub pull :
+	docker run -d --hostname swn-rabbit --name swn-rabbit -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+
+Single Container
+For aspnetcore app after adding docker file -- for single container add docker file build and run = create new container
+	$ docker build -t aspnetapp .
+	$ docker run -d -p 8080:80 --name myapp aspnetapp
+
+docker compose up
+	This command run multiple container
+
+Multi Container - docker-compose.yml
+	docker-compose up
+
+Close all dockers and run with below command on that location;
+
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
+or
 docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
-docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml down -d
+docker compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
   -f -> files
 
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 docker rmi $(docker images -q)
+
+Remove all none images
+docker system prune
 
 -----
 docker pull redis
