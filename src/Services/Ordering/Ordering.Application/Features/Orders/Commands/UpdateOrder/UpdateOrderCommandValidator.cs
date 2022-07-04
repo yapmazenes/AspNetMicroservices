@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
+namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
 {
-    public class CheckoutOrderCommandValidator : AbstractValidator<CheckoutOrderCommand>
+    public class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommand>
     {
-        public CheckoutOrderCommandValidator()
+        public UpdateOrderCommandValidator()
         {
+            RuleFor(p => p.Id).GreaterThan(0).WithMessage("Order must not be empty");
+
             RuleFor(p => p.UserName)
                 .NotEmpty().WithMessage("{UserName} is required")
                 .NotNull()

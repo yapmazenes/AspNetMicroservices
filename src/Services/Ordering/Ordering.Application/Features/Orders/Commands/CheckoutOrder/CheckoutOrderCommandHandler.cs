@@ -21,9 +21,9 @@ namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
         public CheckoutOrderCommandHandler(IOrderRepository orderRepository, IEmailService emailService, IMapper mapper, ILogger<CheckoutOrderCommandHandler> logger)
         {
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
-            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
         }
 
         public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
@@ -42,7 +42,7 @@ namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
             }
             else
             {
-                _logger.LogInformation($"{request.UserName} order is not created. - {DateTime.Now}");
+                _logger.LogError($"{request.UserName} order is not created. - {DateTime.Now}");
 
                 return 0;
             }

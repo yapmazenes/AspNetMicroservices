@@ -22,7 +22,7 @@ namespace Ordering.Application.Contracts.Persistence
                                         List<Expression<Func<T, object>>> includes = null,
                                         bool disableTracking = true);
 
-        Task<T> GetByIdAsync(T id);
+        Task<T> GetByIdAsync(TEntityBase id);
         Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
