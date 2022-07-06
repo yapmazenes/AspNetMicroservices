@@ -36,7 +36,7 @@ namespace Ordering.API.Controllers
         }
 
         //Testing Purpose
-        [HttpGet(Name = "CheckoutOrder")]
+        [HttpPost(Name = "CheckoutOrder")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)
         {
@@ -56,7 +56,7 @@ namespace Ordering.API.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id}", Name = "DeleteOrder")]
+        [HttpDelete("{id}", Name = "DeleteOrder")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
