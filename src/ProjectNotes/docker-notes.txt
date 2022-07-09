@@ -43,7 +43,7 @@ docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 docker rmi $(docker images -q)
 
-Remove all none images
+--Remove all none images
 docker system prune
 
 -----
