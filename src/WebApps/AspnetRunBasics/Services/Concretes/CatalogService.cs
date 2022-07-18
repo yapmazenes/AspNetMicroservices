@@ -14,14 +14,20 @@ namespace AspnetRunBasics.Services.Concretes
     public class CatalogService : ICatalogService
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<CatalogService> _logger;
 
-        public CatalogService(HttpClient httpClient)
+        public CatalogService(HttpClient httpClient, ILogger<CatalogService> logger)
         {
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<IEnumerable<CatalogModel>> GetCatalogs()
         {
+            _logger.LogInformation("Getting Catalog Products from url: {url} and the custom property: {customProperty}", _httpClient.BaseAddress, 6
+                
+              );
+
             var response = await _httpClient.GetAsync("/Catalog");
 
             return await response.ReadContentAs<IEnumerable<CatalogModel>>();
