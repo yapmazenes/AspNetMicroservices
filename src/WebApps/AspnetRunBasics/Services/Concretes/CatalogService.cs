@@ -4,9 +4,7 @@ using AspnetRunBasics.Services.Abstracts;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AspnetRunBasics.Services.Concretes
@@ -24,9 +22,7 @@ namespace AspnetRunBasics.Services.Concretes
 
         public async Task<IEnumerable<CatalogModel>> GetCatalogs()
         {
-            _logger.LogInformation("Getting Catalog Products from url: {url} and the custom property: {customProperty}", _httpClient.BaseAddress, 6
-                
-              );
+            _logger.LogInformation("Getting Catalog Products from url: {url} and the custom property: {customProperty}", _httpClient.BaseAddress, 6);
 
             var response = await _httpClient.GetAsync("/Catalog");
 
