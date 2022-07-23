@@ -20,6 +20,8 @@ namespace Common.Logging
         {
             try
             {
+                _logger.LogInformation("Sending request to {url}", request.RequestUri);
+
                 var response = await base.SendAsync(request, cancellationToken);
 
                 if (response.IsSuccessStatusCode)
