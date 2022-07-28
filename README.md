@@ -74,4 +74,32 @@ AspNetMicroservices Infrastructure for E-Commerce Application
 * Containerization of databases
 * Override Environment variables
 
+## Installation & Setup
+#### To start, run below command:
+```
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
+```
+#### To stop, run below command:
+```
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
+```
+
+### Endpoints & Credentials
+- Catalog Api = 8000
+- Basket Api = 8001
+- Discount Api = 8002
+- Discount Grpc = 8003
+- Ordering Api = 8004
+- Shopping Aggregator = 8005
+- Web Application = 8006
+- Health Check Portal = 8007
+- Ocelot Api Gateway = 8010
+- MongoDB = 27017
+- Redis = 6379
+- pgAdmin4 = 5050 (yapmazenes@gmail.com / EnesYapmaz123)
+- Kibana = 5601
+- Portainer = 9000 (admin / Abcd123456789)
+- Elasticsearch = 9200
+- RabbitMQ = 15672 (guest / guest)
+
 I Have implemented this base project from Microservices Architecture and Implementation on .NET 5 Course - [mehmetozkaya](https://github.com/mehmetozkaya)
