@@ -10,7 +10,7 @@ namespace Common.Logging
     public static class SeriLogger
     {
         public static Action<HostBuilderContext, LoggerConfiguration> Configure => (context, configuration) =>
-        
+
         {
             var elasticUri = context.Configuration.GetValue<string>("ElasticConfiguration:Uri");
 
@@ -27,8 +27,10 @@ namespace Common.Logging
                     NumberOfShards = 2,
                     NumberOfReplicas = 1
                 })
+
             .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
             .Enrich.WithProperty("Application", context.HostingEnvironment.ApplicationName)
+            .Enrich.With<LogEnricher>()
             .ReadFrom.Configuration(context.Configuration);
         };
     }
