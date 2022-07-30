@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["WebApps/WebStatus/WebStatus.csproj", "WebApps/WebStatus/"]
+COPY ["BuildingBlocks/Common.Logging/Common.Logging.csproj", "BuildingBlocks/Common.Logging/"]
 RUN dotnet restore "WebApps/WebStatus/WebStatus.csproj"
 COPY . .
 WORKDIR "/src/WebApps/WebStatus"

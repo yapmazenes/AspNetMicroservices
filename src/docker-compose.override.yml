@@ -210,7 +210,7 @@ services:
       - HealthChecksUI__HealthChecks__4__Uri=http://shopping.aggregator/hc
       - HealthChecksUI__HealthChecks__5__Name=AspNetRunBasicks WebMVC Health Check
       - HealthChecksUI__HealthChecks__5__Uri=http://aspnetrunbasics/hc
-
+      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
     ports:
       - "8007:80"
 

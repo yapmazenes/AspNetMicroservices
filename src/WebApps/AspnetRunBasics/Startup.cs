@@ -14,6 +14,9 @@ using Polly.Extensions.Http;
 using Serilog;
 using System;
 using System.Net.Http;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace AspnetRunBasics
 {
@@ -54,7 +57,16 @@ namespace AspnetRunBasics
             services.AddHealthChecks()
                     .AddUrlGroup(new Uri($"{Configuration["ApiSettings:GatewayAddress"]}"), "Ocelot API Gw", HealthStatus.Degraded);
 
-
+            services.AddOpenTelemetryTracing((builder) =>
+            {
+                builder
+                    .AddAspNetCoreInstrumentation()
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("AspnetRunBasics"))
+                    .AddConsoleExporter(options =>
+                    {
+                        options.Targets = ConsoleExporterOutputTargets.Console;
+                    });
+            });
         }
 
         private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
