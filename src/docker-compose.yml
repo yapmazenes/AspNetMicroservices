@@ -82,6 +82,9 @@ services:
       context: .
       dockerfile: WebApps/WebStatus/Dockerfile
 
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+
 volumes:
   mongo_data:
   portainer_data:

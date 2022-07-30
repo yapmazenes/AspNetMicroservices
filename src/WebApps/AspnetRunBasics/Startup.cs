@@ -62,6 +62,14 @@ namespace AspnetRunBasics
                 builder
                     .AddAspNetCoreInstrumentation()
                     .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("AspnetRunBasics"))
+                    .AddHttpClientInstrumentation()
+                    .AddSource(nameof(CatalogService))
+                    .AddJaegerExporter(options =>
+                    {
+                        options.AgentHost = "localhost";
+                        options.AgentPort = 6831;
+                        options.ExportProcessorType = OpenTelemetry.ExportProcessorType.Simple;
+                    })
                     .AddConsoleExporter(options =>
                     {
                         options.Targets = ConsoleExporterOutputTargets.Console;
