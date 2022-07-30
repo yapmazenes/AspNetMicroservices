@@ -1,3 +1,4 @@
+using Discount.API.Controllers;
 using Discount.API.Repositories;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
@@ -40,6 +41,14 @@ namespace Discount.API
                 builder
                     .AddAspNetCoreInstrumentation()
                     .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("Discount.API"))
+                    .AddHttpClientInstrumentation()
+                    .AddSource(nameof(DiscountController))
+                    .AddJaegerExporter(options =>
+                    {
+                        options.AgentHost = "localhost";
+                        options.AgentPort = 6831;
+                        options.ExportProcessorType = OpenTelemetry.ExportProcessorType.Simple;
+                    })
                     .AddConsoleExporter(options =>
                     {
                         options.Targets = ConsoleExporterOutputTargets.Console;
