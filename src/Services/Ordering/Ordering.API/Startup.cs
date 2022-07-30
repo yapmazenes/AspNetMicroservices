@@ -69,8 +69,8 @@ namespace Ordering.API
                     .AddSource(nameof(OrderController))
                     .AddJaegerExporter(options =>
                     {
-                        options.AgentHost = "localhost";
-                        options.AgentPort = 6831;
+                        options.AgentHost = Configuration["JaegerConfiguration:AgentHost"];
+                        options.AgentPort = int.Parse(Configuration["JaegerConfiguration:AgentPort"] ?? "6831");;
                         options.ExportProcessorType = OpenTelemetry.ExportProcessorType.Simple;
                     })
                     .AddConsoleExporter(options =>

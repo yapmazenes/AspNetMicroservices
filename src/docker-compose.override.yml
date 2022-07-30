@@ -71,6 +71,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     depends_on:
       - catalogdb
     ports:
@@ -84,6 +85,7 @@ services:
       - "GrpcSettings:DiscountUrl=http://discount.grpc"
       - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     depends_on:
       - basketdb
       - rabbitmq
@@ -97,6 +99,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     depends_on:
       - discountdb
     ports:
@@ -109,6 +112,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     depends_on:
       - discountdb
     ports:
@@ -122,6 +126,7 @@ services:
       - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678"
       - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     depends_on:
       - orderdb
       - rabbitmq
@@ -134,6 +139,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     depends_on:
       - catalog.api
       - basket.api
@@ -151,6 +157,7 @@ services:
       - ApiSettings:BasketUrl=http://basket.api
       - ApiSettings:OrderingUrl=http://ordering.api
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     depends_on:
       - catalog.api
       - basket.api
@@ -164,6 +171,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ApiSettings:GatewayAddress=http://ocelotapigw"
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     depends_on:
       - ocelotapigw
       - catalog.api
@@ -211,12 +219,18 @@ services:
       - HealthChecksUI__HealthChecks__5__Name=AspNetRunBasicks WebMVC Health Check
       - HealthChecksUI__HealthChecks__5__Uri=http://aspnetrunbasics/hc
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+      - "JaegerConfiguration:AgentHost=jaeger"
     ports:
       - "8007:80"
 
 
   jaeger:
     container_name: jaeger
+    environment:
+      - SPAN_STORAGE_TYPE=badger
+      - BADGER_EPHEMERAL=false
+      - BADGER_DIRECTORY_VALUE=/badger/data
+      - BADGER_DIRECTORY_KEY=/badger/key
     ports:
       - "5775:5775/udp"
       - "6831:6831/udp"
@@ -225,3 +239,5 @@ services:
       - "16686:16686"
       - "14268:14268"
       - "14250:14250"
+    volumes:
+      - jaeger-data:/badger

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Ocelot.Cache.CacheManager;
@@ -15,6 +16,13 @@ namespace OcelotApiGw
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot().
@@ -29,8 +37,8 @@ namespace OcelotApiGw
                     .AddSource(nameof(IOcelotBuilder))
                     .AddJaegerExporter(options =>
                     {
-                        options.AgentHost = "localhost";
-                        options.AgentPort = 6831;
+                        options.AgentHost = Configuration["JaegerConfiguration:AgentHost"];
+                        options.AgentPort = int.Parse(Configuration["JaegerConfiguration:AgentPort"] ?? "6831");;
                         options.ExportProcessorType = ExportProcessorType.Simple;
                     })
                     .AddConsoleExporter(options =>

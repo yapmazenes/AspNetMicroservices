@@ -36,8 +36,8 @@ namespace WebStatus
                     .AddSource(nameof(HomeController))
                     .AddJaegerExporter(options =>
                     {
-                        options.AgentHost = "localhost";
-                        options.AgentPort = 6831;
+                        options.AgentHost = Configuration["JaegerConfiguration:AgentHost"];
+                        options.AgentPort = int.Parse(Configuration["JaegerConfiguration:AgentPort"] ?? "6831");;
                         options.ExportProcessorType = ExportProcessorType.Simple;
                     })
                     .AddConsoleExporter(options =>

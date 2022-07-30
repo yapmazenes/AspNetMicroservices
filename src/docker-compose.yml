@@ -91,6 +91,4 @@ volumes:
   postgres_data:
   pgadmin_data:
   elasticsearch-data:
-  
-
-
+  jaeger-data:
