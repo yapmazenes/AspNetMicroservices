@@ -4,10 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace OcelotApiGw
 {
@@ -15,6 +12,8 @@ namespace OcelotApiGw
     {
         public static void Main(string[] args)
         {
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -28,6 +27,13 @@ namespace OcelotApiGw
                 {
                     webBuilder.UseStartup<Startup>();
                 })
+              .ConfigureLogging(loggingBuilder =>
+              {
+                  loggingBuilder.Configure(options =>
+                  {
+                      options.ActivityTrackingOptions = ActivityTrackingOptions.TraceId | ActivityTrackingOptions.SpanId;
+                  });
+              })
                 .UseSerilog(SeriLogger.Configure);
 
                 //.ConfigureLogging((hostingContext, loggingBuilder) =>
