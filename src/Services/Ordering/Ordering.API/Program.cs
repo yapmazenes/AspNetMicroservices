@@ -1,16 +1,12 @@
+using Common.Logging;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Ordering.API.Extensions;
 using Ordering.Infrastructure.Persistence;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Serilog;
-using Common.Logging;
+using System.Diagnostics;
 
 namespace Ordering.API
 {
@@ -18,6 +14,8 @@ namespace Ordering.API
     {
         public static void Main(string[] args)
         {
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+
             CreateHostBuilder(args)
                 .Build()
                 .MigrateDatabase<OrderContext>((context, services) =>
@@ -30,6 +28,13 @@ namespace Ordering.API
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                 .ConfigureLogging(loggingBuilder =>
+                 {
+                     loggingBuilder.Configure(options =>
+                     {
+                         options.ActivityTrackingOptions = ActivityTrackingOptions.TraceId | ActivityTrackingOptions.SpanId;
+                     });
+                 })
                 .UseSerilog(SeriLogger.Configure)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

@@ -11,6 +11,9 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +48,17 @@ namespace Catalog.API
                         Configuration["DatabaseSettings:ConnectionString"],
                         "Catalog MongoDb Health",
                         HealthStatus.Degraded);
+
+            services.AddOpenTelemetryTracing((builder) =>
+            {
+                builder
+                    .AddAspNetCoreInstrumentation()
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("Catalog.API"))
+                    .AddConsoleExporter(options =>
+                    {
+                        options.Targets = ConsoleExporterOutputTargets.Console;
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
