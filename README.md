@@ -15,7 +15,8 @@ AspNetMicroservices Infrastructure for E-Commerce Application
 - EntityFramework
 - Grpc
 - Ocelot
-
+- Jaeger
+- WebStatus / WatchDog
 - Portainer.io
 - Docker
 
@@ -101,5 +102,6 @@ docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
 - Portainer = 9000 (admin / Abcd123456789)
 - Elasticsearch = 9200
 - RabbitMQ = 15672 (guest / guest)
+- Jaeger = 16686
 
 I Have implemented this base project from Microservices Architecture and Implementation on .NET 5 Course - [mehmetozkaya](https://github.com/mehmetozkaya)
