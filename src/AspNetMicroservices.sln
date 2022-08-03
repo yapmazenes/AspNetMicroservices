@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectNotes", "ProjectNotes", "{DFC2FB2C-A897-4E40-B205-0E9B0AA09C79}"
 	ProjectSection(SolutionItems) = preProject
 		ProjectNotes\docker-notes.txt = ProjectNotes\docker-notes.txt
+		ProjectNotes\kubectl+commands.txt = ProjectNotes\kubectl+commands.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{0011F7B2-A0D2-467E-BB90-478B7CD4F756}"
@@ -52,7 +53,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRunBasics", "WebApps\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Logging", "BuildingBlocks\Common.Logging\Common.Logging.csproj", "{49EB858F-FF86-43EF-968B-AB25D67C59CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStatus", "WebApps\WebStatus\WebStatus.csproj", "{37767ADE-4C64-41A8-B03C-250516EBA3AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStatus", "WebApps\WebStatus\WebStatus.csproj", "{37767ADE-4C64-41A8-B03C-250516EBA3AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

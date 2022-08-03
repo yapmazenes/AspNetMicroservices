@@ -51,3 +51,11 @@ docker pull redis
 docker run -d -p 6379:6379 --name aspnetrun-redis redis
 docker logs -f aspnetrun-redis
 docker exec -it aspnetrun-redis /bin/bash
+
+----Deploying .Net Microservices to Kubernetes, move cloud Azure Kubernetes Services(AKS), Automating with Azure DevOps----
+
+docker login
+
+docker tag <imageId> <dockerRepositoryTagName(for auto mapping push)>
+
+docker push <dockerRepositoryTagName(for auto mapping push)>:<latest/development or etc>
