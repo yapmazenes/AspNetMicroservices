@@ -1,0 +1,14 @@
+kubectl get pod
+kubectl get svc
+
+kubectl get pod <podname> -o wide
+
+kubectl describe pod <podname>
+    - do analyse, check events
+
+kubectl logs <podname>
+
+- exception can comes from the networking
+    -service definitions
+        -in the local machine we should not use LoadBalancer service type because we can not set a external other IP, if we can set a new other resource's external ip, it should be work properly
+        -LoadBalancer to NodePort

@@ -1,0 +1,3 @@
+kubectl delete -f .\k8 or kubectl delete -f .
+
+kubectl get all

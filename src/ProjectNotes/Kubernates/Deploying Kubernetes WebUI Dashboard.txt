@@ -1,0 +1,17 @@
+﻿Kubernates UI
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/....yaml
+
+kubectl describe secret -n kube-system
+
+kubectl proxy
+
+-------------------------------
+
+Planning to Microservice yaml files
+
+	- Dbs -> Deployment, Service, ConfigMap(db url), Secret(Db username-password)
+	- Apis -> Deployment, Service, set env variables configmap
+	- Client -> Deployment, Service (LoadBalancer for External calls)
+
+	External -> Client -> Apis -> Dbs(Mongo, Redis, MsSql, PostgreSql, ElasticSearch...)

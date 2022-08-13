@@ -10,7 +10,8 @@ kubectl get pod
 kubectl get services
 kubectl get all
 kubectl get all -- pods, services, deployments..
-
+kubectl get pod -o wide
+kubectl get secret
 -----------
 Impritive - Declarative
 Impritive Commands
@@ -20,15 +21,16 @@ kubectl port-forward [pod] [ports]
 
 kubectl create [resource]
 kubectl apply [resource] -- create or modify resources
+kubectl delete
 
 -----------
 kubectl run swn-nginx --image=nginx
-kubectl get pods
+kubectl get pod
 kubectl get all
 
 kubectl port-forward swn-nginx 8080:80
 kubectl delete deployment swn-nginx
-kubectl get pods --watch
+kubectl get pod --watch
 ---------
 
 kubectl create
@@ -67,3 +69,16 @@ kubectl delete deployment mongo-depl
 kubectl get pod --watch
 kubectl get replicaset
 ---------
+
+kubectl apply -f nginx-depl.yaml
+
+kubectl get pod --watch
+
+kubectl delete -f nginx-depl.yaml
+kubectl exec -it
+kubectl describe
+
+--------------
+kubectl get deployment nginx-depl -o yaml
+
+after we can see yaml files

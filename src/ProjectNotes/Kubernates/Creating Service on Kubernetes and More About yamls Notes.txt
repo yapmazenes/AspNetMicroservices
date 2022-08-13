@@ -1,0 +1,53 @@
+﻿Developing .yaml files with 2 parts
+1) Deployment yaml -> Creating pods
+2) Service yaml file -> Pod Communication
+
+kind: Deployment
+kind: Service
+without the service definition pods cannot be reachable
+
+Yaml files has 3 part
+
+Basic informations;
+
+metadata:
+  name: nginx-depl
+  labels:
+    app: nginx
+
+2. Part Spesicifations
+
+spec:
+  containers:
+    - name:nginx
+      image: nginx:1.16
+      ports:
+
+      ....
+
+ Spesifications belong to the kind of the kubernate resources
+
+ Kubernates generate status part; We develop metadata and spec are special for kind 
+
+ kubectl get deployment nginx-depl -o yaml
+
+ after we can see yaml file with added status: section
+
+ ----
+
+ label definition is important and make sure put the importance about the label definitions
+
+ name should be same accourding the same names, kubertanes match the resources, Ex: Deployment and service definition 
+ exposing forwarding the ports these deployment pods
+
+ ----------
+
+ kubectl describe service nginx-service
+
+ kubectl get pod -o wide
+
+ added ip column, Ips on Pod Definitions and service endpoints is the same
+
+
+ kubectl delete -f .\nginx-depl.yaml
+ kubectl delete -f .\nginx-service.yaml

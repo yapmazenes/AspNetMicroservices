@@ -1,0 +1,43 @@
+- Change Code
+- execute docker-compose file -build images
+
+----- Tag and Push new version -----
+
+az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
+acrLoginServer
+----------
+shoppingacr.azurecr.io
+
+docker tag shoppingclient:latest shoppingacr.azurecr.io/shoppingclient:v2
+
+docker push shoppingacr.azurecr.io/shoppingclient:v2
+
+az acr login --name shoppingacr
+
+----------------
+
+az acr repository list --name shoppingacr --output table
+
+az acr repository show-tags --name shoppingacr --repository shoppingclient --output table
+
+-------- Deploy v2 of Shopping.Client Microservices to AKS with zero-downtime rollout k8s ----------
+
+change .yaml file image tag "v1 to v2"
+
+kubectl apply -f .\aks\
+
+kubectl get pod --watch
+
+kubectl get deployment -o wide
+
+kubectl get replicaset -o wide
+
+kubectl apply -f .\aks
+
+
+-------------- Update CPU Resources for Zero-Dowtime Deployments --------------
+in the .yaml file
+resources
+    requests:
+        memory: "64Mi"
+        cpu: "0.1" => 500m = 0.5

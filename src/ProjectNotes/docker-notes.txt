@@ -59,3 +59,11 @@ docker login
 docker tag <imageId> <dockerRepositoryTagName(for auto mapping push)>
 
 docker push <dockerRepositoryTagName(for auto mapping push)>:<latest/development or etc>
+
+-------- config ---------
+
+kubectl config get-contexts
+
+kubectl config current-context
+
+kubectl config use-context <name>

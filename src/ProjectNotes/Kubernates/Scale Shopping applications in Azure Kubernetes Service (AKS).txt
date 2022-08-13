@@ -1,0 +1,11 @@
+kubectl get pod
+kubectl get deployment
+
+kubectl scale --replicas=3 shoppingclient-deployment
+
+kubectl get all
+
+kubectl get pod --watch
+
+--other option
+    change in .yaml files on spec: replicas:3
