@@ -57,8 +57,45 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStatus", "WebApps\WebSta
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernates", "Kubernates", "{A716A1C6-2F65-43BF-98AB-D26348A2E404}"
 	ProjectSection(SolutionItems) = preProject
+		ProjectNotes\Kubernates\Clear and Create All K8s Resources on Your Docker Cluster.txt = ProjectNotes\Kubernates\Clear and Create All K8s Resources on Your Docker Cluster.txt
 		ProjectNotes\Kubernates\Creating Service on Kubernetes and More About yamls Notes.txt = ProjectNotes\Kubernates\Creating Service on Kubernetes and More About yamls Notes.txt
 		ProjectNotes\Kubernates\Deploying Kubernetes WebUI Dashboard.txt = ProjectNotes\Kubernates\Deploying Kubernetes WebUI Dashboard.txt
+		ProjectNotes\Kubernates\Scale Shopping applications in Azure Kubernetes Service (AKS).txt = ProjectNotes\Kubernates\Scale Shopping applications in Azure Kubernetes Service (AKS).txt
+		ProjectNotes\Kubernates\Troubleshooting on K8s For Shopping.Client K8s yaml File Definitions.txt = ProjectNotes\Kubernates\Troubleshooting on K8s For Shopping.Client K8s yaml File Definitions.txt
+		ProjectNotes\Kubernates\Update Shopping Microservices With Zero-Downtime Deployment on Live AKS.txt = ProjectNotes\Kubernates\Update Shopping Microservices With Zero-Downtime Deployment on Live AKS.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure Pipelines", "Azure Pipelines", "{90E58DEE-0605-4F5B-A80D-48C46B86D351}"
+	ProjectSection(SolutionItems) = preProject
+		ProjectNotes\Kubernates\Azure Pipelines\automate-deployments-with-ci-cd-pipelines-on-azure-devops.txt = ProjectNotes\Kubernates\Azure Pipelines\automate-deployments-with-ci-cd-pipelines-on-azure-devops.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pipelines", "pipelines", "{0A1FA45E-DD05-43E5-86AB-1FC6EFEA3A02}"
+	ProjectSection(SolutionItems) = preProject
+		ProjectNotes\pipelines\shoppingapi-pipeline.yaml = ProjectNotes\pipelines\shoppingapi-pipeline.yaml
+		ProjectNotes\pipelines\shoppingclient-pipeline.yaml = ProjectNotes\pipelines\shoppingclient-pipeline.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{FD2A5E99-DA86-4214-9B39-BF085DB27210}"
+	ProjectSection(SolutionItems) = preProject
+		ProjectNotes\k8s\mongo-configmap.yaml = ProjectNotes\k8s\mongo-configmap.yaml
+		ProjectNotes\k8s\mongo-secret.yaml = ProjectNotes\k8s\mongo-secret.yaml
+		ProjectNotes\k8s\mongo.yaml = ProjectNotes\k8s\mongo.yaml
+		ProjectNotes\k8s\shoppingapi-configmap.yaml = ProjectNotes\k8s\shoppingapi-configmap.yaml
+		ProjectNotes\k8s\shoppingapi.yaml = ProjectNotes\k8s\shoppingapi.yaml
+		ProjectNotes\k8s\shoppingclient.yaml = ProjectNotes\k8s\shoppingclient.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aks", "aks", "{96294447-6A29-4CB9-8F1A-4F4D9FA28A18}"
+	ProjectSection(SolutionItems) = preProject
+		ProjectNotes\aks\commands.txt = ProjectNotes\aks\commands.txt
+		ProjectNotes\aks\mongo-configmap.yaml = ProjectNotes\aks\mongo-configmap.yaml
+		ProjectNotes\aks\mongo-secret.yaml = ProjectNotes\aks\mongo-secret.yaml
+		ProjectNotes\aks\mongo.yaml = ProjectNotes\aks\mongo.yaml
+		ProjectNotes\aks\shoppingapi-configmap.yaml = ProjectNotes\aks\shoppingapi-configmap.yaml
+		ProjectNotes\aks\shoppingapi.yaml = ProjectNotes\aks\shoppingapi.yaml
+		ProjectNotes\aks\shoppingautoscale.yaml = ProjectNotes\aks\shoppingautoscale.yaml
+		ProjectNotes\aks\shoppingclient.yaml = ProjectNotes\aks\shoppingclient.yaml
 	EndProjectSection
 EndProject
 Global
@@ -151,6 +188,10 @@ Global
 		{49EB858F-FF86-43EF-968B-AB25D67C59CC} = {74BFCB13-A5FC-4C46-9EEC-533EEA1ED56E}
 		{37767ADE-4C64-41A8-B03C-250516EBA3AE} = {F2AD6A6A-C82B-4CAE-A20C-329109D3C3D5}
 		{A716A1C6-2F65-43BF-98AB-D26348A2E404} = {DFC2FB2C-A897-4E40-B205-0E9B0AA09C79}
+		{90E58DEE-0605-4F5B-A80D-48C46B86D351} = {A716A1C6-2F65-43BF-98AB-D26348A2E404}
+		{0A1FA45E-DD05-43E5-86AB-1FC6EFEA3A02} = {DFC2FB2C-A897-4E40-B205-0E9B0AA09C79}
+		{FD2A5E99-DA86-4214-9B39-BF085DB27210} = {DFC2FB2C-A897-4E40-B205-0E9B0AA09C79}
+		{96294447-6A29-4CB9-8F1A-4F4D9FA28A18} = {DFC2FB2C-A897-4E40-B205-0E9B0AA09C79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22DE7DA8-EEDE-4544-8646-264FE8799D75}
