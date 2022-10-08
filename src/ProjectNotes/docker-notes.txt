@@ -46,6 +46,10 @@ docker rmi $(docker images -q)
 --Remove all none images
 docker system prune
 
+--Inspect Container
+docker container inspect <container-name>
+docker container inspect c_graylog
+
 -----
 docker pull redis
 docker run -d -p 6379:6379 --name aspnetrun-redis redis
