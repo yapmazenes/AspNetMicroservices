@@ -64,6 +64,13 @@ docker tag <imageId> <dockerRepositoryTagName(for auto mapping push)>
 
 docker push <dockerRepositoryTagName(for auto mapping push)>:<latest/development or etc>
 
+
+----- connect to localhost within docker container
+
+localhost -> host.docker.internal
+
+https://www.howtogeek.com/devops/how-to-connect-to-localhost-within-a-docker-container 
+
 -------- config ---------
 
 kubectl config get-contexts
@@ -71,3 +78,4 @@ kubectl config get-contexts
 kubectl config current-context
 
 kubectl config use-context <name>
+
